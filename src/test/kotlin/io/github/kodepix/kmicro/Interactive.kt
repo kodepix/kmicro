@@ -1,4 +1,6 @@
 package io.github.kodepix.kmicro
 
-fun main() {
+import io.github.kodepix.kmicro.service.*
+
+fun main() = service {
 }

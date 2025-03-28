@@ -2,6 +2,11 @@
 
 package io.github.kodepix.kmicro.samples
 
+import io.github.kodepix.kmicro.service.*
 
-internal fun someSample() {
+
+internal fun serviceSample() {
+
+    service {
+    }
 }

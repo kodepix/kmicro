@@ -1,0 +1,66 @@
+@file:Suppress("unused")
+
+package io.github.kodepix.kmicro.service
+
+import io.github.kodepix.*
+import io.ktor.server.application.*
+import io.ktor.server.cio.*
+import io.ktor.server.engine.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
+
+
+/**
+ * Configures and runs embedded server with [CIO] engine.
+ *
+ * Usage:
+ *
+ * ```kotlin
+ * service {
+ * }
+ * ```
+ *
+ * @sample io.github.kodepix.kmicro.samples.serviceSample
+ */
+fun service(init: Application.() -> Unit) {
+
+    val serviceName = extractServiceName()
+    configureLogback(serviceName)
+
+    log.info {
+        buildString {
+            +"Starting service"
+            +DELIMITER
+            deleteLastChar()
+        }
+    }
+
+    embeddedServer(
+        factory = CIO,
+        configure = { connector { port = config.service.deployment.port } },
+        module = {
+            routing {
+                get("/") {
+                    call.respondText("Hello, world!")
+                }
+            }
+            init()
+        }
+    )
+        .start(wait = true)
+}
+
+
+private fun extractServiceName() = Class.forName(Throwable().stackTrace.last().className).protectionDomain.codeSource.location.path
+    .let { Regex(".*/(.+)/build").find(it) ?: Regex("([^/-]+)-\\d.*jar").find(it) }
+    .let { it?.groupValues?.get(1) ?: error("Can't extract service name") }
+
+private fun configureLogback(serviceName: String) {
+    System.setProperty("kmicro.service.name", serviceName)
+    System.setProperty("kmicro.storage.path", config.service.storage.path.normalize().toAbsolutePath().toString())
+}
+
+
+private const val DELIMITER = "—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————"
+
+private val log by logger()
