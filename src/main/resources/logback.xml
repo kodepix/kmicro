@@ -1,0 +1,23 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5.-5p :%-18.-18thread | %30.30logger | %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${kmicro.storage.path}/logs/${kmicro.service.name}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${kmicro.storage.path}/logs/archive/${kmicro.service.name}-%d{yyyy-MM}.log.zip</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSSxxx, Europe/Moscow} | %p | %thread | %logger | %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="${KMICRO_LOG_LEVEL:-DEBUG}">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING"/>
+    </root>
+</configuration>

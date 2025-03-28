@@ -11,7 +11,7 @@ plugins {
     signing
 }
 
-description = "Library template."
+description = "Microservice framework that uses Ktor."
 group = "io.github.kodepix"
 version = "1.0-SNAPSHOT"
 
@@ -40,7 +40,7 @@ mavenPublishing {
     signAllPublications()
 
     pom {
-        name = "Commons Library"
+        name = "Microservice framework that uses Ktor"
         description = project.description
         inceptionYear = "2025"
         url = "https://github.com/kodepix/${project.name}/"
@@ -83,6 +83,12 @@ tasks {
     runKtlintCheckOverKotlinScripts { dependsOn(runKtlintFormatOverKotlinScripts) }
     runKtlintCheckOverMainSourceSet { dependsOn(runKtlintFormatOverMainSourceSet) }
     runKtlintCheckOverTestSourceSet { dependsOn(runKtlintFormatOverTestSourceSet) }
+}
+
+versionCatalogUpdate {
+    pin {
+        plugins.addAll(libs.plugins.version.catalog.update) // because nl.littlerobots.version-catalog-update:1.0.0 not updates libs versions
+    }
 }
 
 private fun isNonStable(version: String) = run {

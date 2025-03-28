@@ -1,8 +1,8 @@
 <img align="left" alt="logo" width="128" src=".idea/icon.svg">
 
-# &nbsp;&nbsp;&nbsp;Library template
+# &nbsp;&nbsp;&nbsp;Kmicro
 
-###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library template.
+###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Microservice framework that uses Ktor.
 
 [![Kotlin](https://img.shields.io/badge/kotlin-2.1.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.kodepix:lib-template:1.0")
+    implementation("io.github.kodepix:kmicro:1.0")
 }
 ```
 

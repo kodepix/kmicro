@@ -1,6 +1,8 @@
 @file:Suppress("unused")
 
-package io.github.kodepix
+package io.github.kodepix.kmicro
+
+import io.github.kodepix.*
 
 
 /**
