@@ -40,6 +40,7 @@ fun service(init: Application.() -> Unit) {
         module = {
             configureHTTP()
             configureMonitoring()
+            configureRouting()
             init()
         }
     )

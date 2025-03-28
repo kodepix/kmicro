@@ -23,7 +23,7 @@ import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.seconds
 
 
-fun Application.configureMonitoring() {
+internal fun Application.configureMonitoring() {
 
     install(CallLogging) {
         disableDefaultColors()
