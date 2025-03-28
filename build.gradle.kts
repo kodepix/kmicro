@@ -24,6 +24,9 @@ dependencies {
     api(libs.kotlinx.coroutines.slf4j)
     api(libs.kotlin.logging)
     api(libs.ktor.server.cio)
+    api(libs.ktor.server.default.headers)
+    api(libs.ktor.server.cors)
+    api(libs.ktor.server.compression)
     api(libs.kodepix.ktor.server.extras)
     api(libs.logback.classic)
 

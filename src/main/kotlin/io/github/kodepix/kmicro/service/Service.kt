@@ -3,11 +3,10 @@
 package io.github.kodepix.kmicro.service
 
 import io.github.kodepix.*
+import io.github.kodepix.kmicro.service.plugins.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
 
 
 /**
@@ -39,11 +38,7 @@ fun service(init: Application.() -> Unit) {
         factory = CIO,
         configure = { connector { port = config.service.deployment.port } },
         module = {
-            routing {
-                get("/") {
-                    call.respondText("Hello, world!")
-                }
-            }
+            configureHTTP()
             init()
         }
     )
