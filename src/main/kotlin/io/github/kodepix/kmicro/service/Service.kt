@@ -39,6 +39,7 @@ fun service(init: Application.() -> Unit) {
         configure = { connector { port = config.service.deployment.port } },
         module = {
             configureHTTP()
+            configureMonitoring()
             init()
         }
     )
