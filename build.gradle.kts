@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.ben.manes.versions)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.dokka)
+    alias(libs.plugins.i18n4k)
     alias(libs.plugins.vanniktech.maven.publish)
     signing
 }
@@ -46,7 +47,10 @@ kotlin { jvmToolchain(21) }
 ktlint {
     verbose = true
     outputToConsole = true
+    filter { exclude { it.file.path.contains("generated") } }
 }
+
+i18n4k { sourceCodeLocales = listOf("en", "ru") }
 
 mavenPublishing {
     publishToMavenCentral(CENTRAL_PORTAL, automaticRelease = true)
@@ -96,6 +100,8 @@ tasks {
     runKtlintCheckOverKotlinScripts { dependsOn(runKtlintFormatOverKotlinScripts) }
     runKtlintCheckOverMainSourceSet { dependsOn(runKtlintFormatOverMainSourceSet) }
     runKtlintCheckOverTestSourceSet { dependsOn(runKtlintFormatOverTestSourceSet) }
+    runKtlintFormatOverMainSourceSet { dependsOn(generateI18n4kFiles) }
+    dokkaGeneratePublicationHtml { dependsOn(generateI18n4kFiles) }
 }
 
 versionCatalogUpdate {
