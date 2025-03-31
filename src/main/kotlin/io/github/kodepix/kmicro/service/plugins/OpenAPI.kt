@@ -57,12 +57,12 @@ private val systemApiTags = listOf(
     TagInfo(
         title = KmicroMessages.monitoringTagTitle.toString(),
         description = KmicroMessages.monitoringTagDescription.toString(),
-        paths = listOf("health")
+        paths = listOf("health", "metrics")
     ),
     TagInfo(
         title = KmicroMessages.debugTagTitle.toString(),
         description = KmicroMessages.debugTagDescription.toString(),
-        paths = listOf("cohort")
+        paths = listOf("debug", "cohort")
     ),
 )
 

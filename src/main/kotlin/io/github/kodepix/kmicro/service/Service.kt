@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package io.github.kodepix.kmicro.service
 
 import io.github.kodepix.*
@@ -21,7 +19,7 @@ import io.ktor.server.engine.*
  *
  * @sample io.github.kodepix.kmicro.samples.serviceSample
  */
-fun service(init: Application.() -> Unit) {
+fun service(init: Application.(String) -> Unit) {
 
     val serviceName = extractServiceName()
     configureLogback(serviceName)
@@ -41,7 +39,7 @@ fun service(init: Application.() -> Unit) {
             configureHTTP()
             configureMonitoring()
             configureRouting()
-            init()
+            init(serviceName)
         }
     )
         .start(wait = true)
@@ -58,6 +56,6 @@ private fun configureLogback(serviceName: String) {
 }
 
 
-private const val DELIMITER = "—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————"
+internal const val DELIMITER = "—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————"
 
 private val log by logger()
