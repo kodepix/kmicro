@@ -5,6 +5,8 @@
 ###### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Microservice framework that uses Ktor.
 
 [![Kotlin](https://img.shields.io/badge/kotlin-2.1.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.kodepix/kmicro)](https://central.sonatype.com/artifact/io.github.kodepix/kmicro)
+![GitHub](https://img.shields.io/github/license/kodepix/kmicro)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 ---
