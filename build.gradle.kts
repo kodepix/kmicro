@@ -14,7 +14,7 @@ plugins {
 
 description = "Microservice framework that uses Ktor."
 group = "io.github.kodepix"
-version = "1.0"
+version = "1.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
