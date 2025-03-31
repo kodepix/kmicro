@@ -1,6 +1,5 @@
 package io.github.kodepix.kmicro.service
 
-import io.github.kodepix.kmicro.service.plugins.*
 import io.github.smiley4.ktoropenapi.config.*
 import io.github.smiley4.ktoropenapi.config.ServerConfig
 import io.ktor.server.application.*
@@ -142,3 +141,17 @@ annotation class ServiceBuilderDsl
 
 @DslMarker
 annotation class OpenAPIConfigDsl
+
+
+/**
+ * Tag description for the API.
+ *
+ * @property title text
+ * @property description description
+ * @property paths list of url strings that are tagged for the route
+ */
+data class TagInfo(
+    val title: String,
+    val description: String,
+    val paths: List<String> = emptyList(),
+)

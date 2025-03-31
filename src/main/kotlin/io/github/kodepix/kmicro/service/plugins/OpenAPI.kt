@@ -131,17 +131,3 @@ internal fun Route.rapiDoc(
         }
     }
 }
-
-
-/**
- * Tag description for the API.
- *
- * @property title text
- * @property description description
- * @property paths list of url strings that are tagged for the route
- */
-data class TagInfo(
-    val title: String,
-    val description: String,
-    val paths: List<String> = emptyList(),
-)
